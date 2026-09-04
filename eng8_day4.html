@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English 8 | Day 4: Thematic Exploration (Topic vs. Thematic Statement)</title>
+  <style>
+:root {
+  --primary: #15803d;
+  --primary-dark: #166534;
+  --primary-light: #f0fdf4;
+  --bg-main: #f8fafc;
+  --card-bg: #ffffff;
+  --text-dark: #0f172a;
+  --text-muted: #475569;
+  --border: #cbd5e1;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-main);
+  margin: 0;
+  padding: 20px;
+  color: var(--text-dark);
+}
+
+.container { max-width: 980px; margin: 0 auto; }
+
+.header-card {
+  background: var(--card-bg);
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  border-top: 5px solid var(--primary);
+}
+
+.header-flex { display: flex; justify-content: space-between; align-items: center; }
+.header-left { display: flex; align-items: center; gap: 18px; }
+.logo-box { width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; }
+.logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.stamp-container { width: 110px; height: 110px; position: relative; }
+.stamp-photo {
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 60px; height: 60px;
+  border-radius: 50%; object-fit: cover;
+  z-index: 1;
+}
+.stamp-svg {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+.tab-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  font-weight: bold;
+  font-size: 0.95em;
+  cursor: pointer;
+  color: #334155;
+}
+.tab-btn.active { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+
+.card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.bellringer-box {
+  background: var(--primary-light);
+  border-left: 4px solid var(--primary);
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deck-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.std-badge {
+  background: #dcfce7;
+  color: var(--primary-dark);
+  font-size: 0.78em;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #bbf7d0;
+}
+
+.slide-stage {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  min-height: 440px;
+}
+
+.slide { display: none; }
+.slide.active { display: block; }
+
+.slide-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+
+.slide-visual-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.callout-box {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  background: #f0fdf4;
+  border-left: 4px solid var(--primary);
+}
+
+.deck-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.ctrl-btn {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.ctrl-btn:disabled { background: #94a3b8; }
+
+.resource-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+label { font-weight: bold; margin-bottom: 6px; display: block; }
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  padding: 14px;
+  font-size: 1.05em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.muted { color: var(--text-muted); }
+.italic { font-style: italic; }
+.subtitle { color: var(--text-muted); }
+
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header-card">
+    <div class="header-flex">
+      <div class="header-left">
+        <div class="logo-box">
+          <img src="chisholm_logo.png" alt="Chisholm Logo" />
+        </div>
+        <div>
+          <h2>English 8</h2>
+          <p class="subtitle">Unit 1: Foundations of Literary Analysis & Theme — Day 4: Thematic Exploration (Topic vs. Thematic Statement)</p>
+        </div>
+      </div>
+
+      <div class="stamp-container">
+        <img class="stamp-photo" src="boehm_photo.jpg" alt="Instructor Photo" />
+        <img class="stamp-svg" src="boehm-stamp.svg" alt="Classroom Stamp" />
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('deck')">Deck</button>
+    <button class="tab-btn" onclick="switchTab('res')">Resource Hub</button>
+    <button class="tab-btn" onclick="switchTab('form')">Student Work Checkpoint</button>
+  </div>
+
+  <!-- TAB: DECK -->
+  <div id="deck-tab" class="card tab-content active">
+    <div class="bellringer-box">
+      <div>
+        <strong>Daily Bellringer Writing Prompt</strong>
+        <p id="bellringer-display" class="italic">Loading prompt...</p>
+      </div>
+      <button class="ctrl-btn" onclick="randomizeBellringer()">Shuffle</button>
+    </div>
+
+    <div class="deck-header">
+      <h3>Unit 1: Foundations of Literary Analysis & Theme</h3>
+      <span id="slide-tracker" class="std-badge">Slide 1 of {{total_slides}}</span>
+    </div>
+
+    <div id="slide-stage" class="slide-stage">
+      <!-- Slides will be injected by script.js using JSON -->
+    </div>
+
+    <div class="deck-controls">
+      <button class="ctrl-btn" id="prev-btn" onclick="moveSlide(-1)" disabled>Previous</button>
+      <button class="ctrl-btn" id="next-btn" onclick="moveSlide(1)">Next</button>
+    </div>
+  </div>
+
+  <!-- TAB: RESOURCE HUB -->
+  <div id="res-tab" class="card tab-content">
+    <h3>Lesson Resource & Reference Hub</h3>
+    <p class="muted">Access official course references below.</p>
+    <div id="resource-list">
+      <!-- Resources injected by script.js -->
+    </div>
+  </div>
+
+  <!-- TAB: STUDENT WORK CHECKPOINT -->
+  <div id="form-tab" class="card tab-content">
+    <h3>Student Work Checkpoint & Reflection</h3>
+    <form id="checkpoint-form">
+      <!-- Dynamic form fields injected by script.js -->
+      <button type="submit" class="submit-btn">Submit Reflection</button>
+    </form>
+  </div>
+
+</div>
+
+<script>
+let currentSlide = 1;
+let totalSlides = 1;
+let bellringers = [];
+
+// Stock image pool for default visual slides
+const stockImagePool = [
+  'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=300&q=80', // Turtle / Nature
+  'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=300&q=80', // Water / Earth-Diver
+  'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=300&q=80', // Ecology / Forest
+  'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&q=80', // Campfire / Orality
+  'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=300&q=80', // Literature / History
+  'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=300&q=80'  // Writing Workshop
+];
+
+// Emoji fallback pool
+const iconPool = ['🐢', '🌊', '🌱', '🗣️', '☯️', '📝'];
+
+function renderSlides(slides) {
+  const stage = document.getElementById('slide-stage');
+  stage.innerHTML = '';
+
+  slides.forEach((slide, index) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'slide' + (index === 0 ? ' active' : '');
+    wrapper.id = `slide-${index + 1}`;
+
+    // Priority 1: slide.image OR Stock Web Image
+    const imageUrl = slide.image || stockImagePool[index % stockImagePool.length];
+    // Fallback: slide.icon OR Emoji Pool
+    const fallbackEmoji = slide.icon || iconPool[index % iconPool.length];
+
+    const visualMediaHTML = `
+      <img src="${imageUrl}" 
+           alt="${slide.title}" 
+           style="width:110px;height:110px;object-fit:cover;border-radius:50%;border:3px solid var(--primary);" 
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+      <span style="font-size: 2.8em; display: none; margin-bottom: 8px;">${fallbackEmoji}</span>
+    `;
+
+    wrapper.innerHTML = `
+      <div class="slide-header">
+        <h3 class="slide-title">${slide.title}</h3>
+        <span class="std-badge">${slide.standard || ''}</span>
+      </div>
+      <div class="slide-grid">
+        <div class="slide-body">
+          <ul>
+            ${(slide.bullets || []).map(b => `<li>${b}</li>`).join('')}
+          </ul>
+          ${slide.callout ? `<div class="callout-box"><strong style="color: var(--primary-dark);">Key Takeaway:</strong> ${slide.callout}</div>` : ''}
+        </div>
+        <div class="slide-visual-card">
+          ${visualMediaHTML}
+          ${slide.visual_caption ? `<small style="color: var(--text-muted); display: block; font-size: 0.82em; margin-top: 6px;">${slide.visual_caption}</small>` : ''}
+        </div>
+      </div>
+    `;
+    stage.appendChild(wrapper);
+  });
+}
+function initLesson(data) {
+  bellringers = data.bellringers || [];
+  totalSlides = (data.slides || []).length || 1;
+
+  document.getElementById('slide-tracker').innerText = `Slide 1 of ${totalSlides}`;
+
+  renderSlides(data.slides || []);
+  renderResources(data.resources || []);
+  renderForm(data.form || []);
+
+  randomizeBellringer();
+}
+
+function randomizeBellringer() {
+  if (!bellringers.length) return;
+  const idx = Math.floor(Math.random() * bellringers.length);
+  document.getElementById('bellringer-display').innerText = bellringers[idx];
+}
+
+function moveSlide(dir) {
+  const newSlide = currentSlide + dir;
+  if (newSlide < 1 || newSlide > totalSlides) return;
+
+  document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+  currentSlide = newSlide;
+  document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+  document.getElementById('slide-tracker').innerText = `Slide ${currentSlide} of ${totalSlides}`;
+  document.getElementById('prev-btn').disabled = currentSlide === 1;
+  document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+}
+
+function renderResources(resources) {
+  const container = document.getElementById('resource-list');
+  container.innerHTML = '';
+
+  resources.forEach(res => {
+    const card = document.createElement('div');
+    card.className = 'resource-card';
+    card.innerHTML = `
+      <div>
+        <strong>${res.title}</strong><br/>
+        <small>${res.description || ''}</small>
+      </div>
+      <a href="${res.file}" class="ctrl-btn">Open Resource</a>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderForm(fields) {
+  const form = document.getElementById('checkpoint-form');
+  const submitBtn = form.querySelector('.submit-btn');
+  form.innerHTML = '';
+
+  fields.forEach(field => {
+    const group = document.createElement('div');
+    group.className = 'form-group';
+    const id = `field_${field.label.replace(/\s+/g, '_').toLowerCase()}`;
+
+    let inputHTML = '';
+    if (field.type === 'short_text') {
+      inputHTML = `<input type="text" id="${id}" ${field.required ? 'required' : ''} />`;
+    } else if (field.type === 'date') {
+      inputHTML = `<input type="date" id="${id}" ${field.required ? 'required' : ''} />`;
+    } else if (field.type === 'rating_scale') {
+      inputHTML = `<select id="${id}">${(field.options || []).map(o => `<option>${o}</option>`).join('')}</select>`;
+    } else if (field.type === 'quote_citation') {
+      inputHTML = `<textarea id="${id}" rows="3" ${field.required ? 'required' : ''}></textarea>`;
+    } else if (field.type === 'select_rubric') {
+      inputHTML = `<select id="${id}"><option>-- Select Rubric Benchmark Level --</option>${(field.options || []).map(o => `<option>${o}</option>`).join('')}</select>`;
+    } else if (field.type === 'checkbox_group' || field.type === 'multi_select') {
+      inputHTML = (field.options || []).map(o => `<label><input type="checkbox" name="${id}" value="${o}" /> ${o}</label>`).join('<br/>');
+    }
+
+    group.innerHTML = `<label for="${id}">${field.label}</label>${inputHTML}`;
+    form.appendChild(group);
+  });
+
+  if (submitBtn) form.appendChild(submitBtn);
+}
+
+function switchTab(key) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+
+  if (key === 'deck') {
+    document.querySelectorAll('.tab-btn')[0].classList.add('active');
+    document.getElementById('deck-tab').classList.add('active');
+  } else if (key === 'res') {
+    document.querySelectorAll('.tab-btn')[1].classList.add('active');
+    document.getElementById('res-tab').classList.add('active');
+  } else if (key === 'form') {
+    document.querySelectorAll('.tab-btn')[2].classList.add('active');
+    document.getElementById('form-tab').classList.add('active');
+  }
+}
+window.addEventListener('DOMContentLoaded', () => initLesson({"course_title": "English 8", "unit_title": "Unit 1: Foundations of Literary Analysis & Theme", "day_title": "Day 4: Thematic Exploration (Topic vs. Thematic Statement)", "bellringers": ["What is the difference between a single-word topic (like 'Friendship') and what an author is saying about that topic?", "Name three universal human experiences or struggles that appear in books, movies, or songs across different cultures.", "Is 'Love' a complete theme? Why or why not?", "Quick Exercise: Turn the single topic 'Courage' into a full sentence that expresses a deeper life lesson."], "slides": [{"title": "1. Lesson Overview & Thematic Exploration", "standard": "MN Anchor Standard R2", "bullets": ["Primary Focus: Investigating universal themes and discovering how authors convey deeper messages about life.", "Core Objective: Differentiate between a simple literary topic and a fully developed thematic statement.", "Why It Matters: Great literature does not just tell a story; it communicates fundamental truths about human nature.", "Today's Goal: Learn the formula to turn one-word topics into universal thematic statements."], "callout": "Key Rule: A topic is what the story is ABOUT (1-2 words). A theme is what the story MEANS (a full sentence).", "icon": "💡", "visual_caption": "Uncovering Deeper Meaning: Moving from Topic to Theme"}, {"title": "2. Defining Literary Topic vs. Theme Statement", "standard": "MN Anchor Standard R2", "bullets": ["Literary Topic: The general subject matter or category of the text (e.g., 'Identity', 'Jealousy', 'Courage').", "Thematic Statement: The central argument, insight, or lesson the author presents about that topic.", "Topic Example: 'Revenge'", "Thematic Statement Example: 'Seeking revenge often destroys the person seeking it more than the target.'"], "callout": "Comparison: Topics are broad labels; themes are complete, arguable claims about real life.", "icon": "🔍", "visual_caption": "Distinction: Subject Matter vs. Author's Central Insight"}, {"title": "3. What Makes a Theme 'Universal'?", "standard": "MN Anchor Standard R2", "bullets": ["Universal Definition: A message that applies to all people, across different cultures, time periods, and backgrounds.", "No Plot Specifics: A universal theme does NOT mention specific characters, settings, or plot points from the story.", "Universal Example: 'Adversity reveals a person's true character.' (Applies to any person in any story).", "Non-Universal Example: 'Jonas learns to be brave in The Giver.' (This is just a plot summary)."], "callout": "Test Your Theme: If you remove the character names and plot, does the sentence still make sense in real life?", "icon": "🌍", "visual_caption": "Universal Application: Truths Beyond Specific Plot Points"}, {"title": "4. The Theme Formula: Topic + Perspective", "standard": "MN Anchor Standard R2", "bullets": ["Step 1: Identify the central topic (e.g., 'Identity').", "Step 2: Ask: 'What does the author believe about this topic by the end of the story?'", "Step 3: Combine them into the formula: [Topic] + [Author's Perspective / Lesson] = Theme Statement.", "Formula Application: 'Identity' + 'is forged through overcoming hardship, not conforming to others' = Complete Theme Statement."], "callout": "Thematic Formula: Topic + Author's Insight = Complete Thematic Statement", "icon": "📐", "visual_caption": "Building a Strong Thematic Statement Step-by-Step"}, {"title": "5. Common Pitfalls: Avoid Clichés and Summaries", "standard": "MN Anchor Standard R2", "bullets": ["Pitfall 1 (Plot Summary): Writing what happened in the story instead of the deeper lesson.", "Pitfall 2 (Overly Preachy Clichés): Using tired sayings like 'Don't judge a book by its cover' or 'Honesty is the best policy.'", "Pitfall 3 (Single-Word Topics): Stopping at 'Friendship' instead of explaining what the text reveals about friendship.", "Fixing Clichés: Replace fortune-cookie advice with nuanced insights about human behavior."], "callout": "Pro Tip: Avoid absolute words like 'always' or 'never.' Human behavior is nuanced!", "icon": "⚠️", "visual_caption": "Avoiding Clichés, Plot Summaries, and One-Word Labels"}, {"title": "6. Guided Practice: Exploring 'Identity'", "standard": "MN Anchor Standard R2", "bullets": ["Topic: Identity & Self-Discovery", "Weak Theme: 'The story is about finding yourself.' (Too vague, lacks insight).", "Strong Theme: 'Embracing one's true identity requires the courage to resist societal expectations.'", "Analysis: Notice how the strong theme explains *how* or *why* identity is shaped."], "callout": "Guided Inquiry: What challenges do characters face when trying to stay true to themselves?", "icon": "🪞", "visual_caption": "Deconstructing Identity as a Universal Literary Theme"}, {"title": "7. Guided Practice: Exploring 'Coming of Age'", "standard": "MN Anchor Standard R2", "bullets": ["Topic: Coming of Age (Growing Up)", "Weak Theme: 'Growing up is hard for kids.' (Cliché, obvious).", "Strong Theme: 'Maturation often requires relinquishing childhood innocence to accept complex moral responsibilities.'", "Analysis: The strong statement highlights the precise trade-off involved in growing up."], "callout": "Literary Archetype: Coming-of-age stories examine the shift from innocence to experience.", "icon": "🌱", "visual_caption": "Analyzing the Shift from Innocence to Experience"}, {"title": "8. Gathering Textual Evidence for Theme", "standard": "MN Anchor Standard R1", "bullets": ["Step 1: Trace Character Growth—How does the protagonist change from beginning to end?", "Step 2: Examine Conflict Resolution—How is the central problem solved, and what was learned?", "Step 3: Analyze Motifs & Symbols—What recurring images or ideas reinforce the central message?", "Step 4: Connect Evidence—Cite specific moments where the character internalizes the lesson."], "callout": "Evidence Rule: A theme statement must be supported by character choices throughout the whole text.", "icon": "📖", "visual_caption": "Tracing Evidence: Character Changes and Conflict Resolution"}, {"title": "9. Partner Activity: The Theme Transformation Challenge", "standard": "MN Anchor Standard SL1", "bullets": ["Activity Setup: Work with your shoulder partner to transform 3 broad topics into strong theme statements.", "Topic A: 'Ambition'", "Topic B: 'Isolation'", "Topic C: 'Perseverance'", "Partner Task: Write 1 universal, complete-sentence theme statement for each topic on your whiteboard/notebook."], "callout": "Peer Challenge: Ensure no character names or plot details slip into your statements!", "icon": "👥", "visual_caption": "Collaborative Workshop: Converting Topics into Full Statements"}, {"title": "10. Comparing Themes Across Different Texts", "standard": "MN Anchor Standard R2", "bullets": ["Same Topic, Different Themes: Two authors can write about the same topic with opposing messages.", "Topic: 'Technology'", "Text A Theme: 'Unchecked technological advancement threatens human empathy and genuine connection.'", "Text B Theme: 'Technology bridges physical divides, empowering isolated individuals to build global community.'", "Takeaway: Authors use their stories to take distinct stances on universal topics."], "callout": "Comparative Analysis: Always look for the author's unique perspective on a shared topic.", "icon": "⚖️", "visual_caption": "Comparing Differing Thematic Stances on a Shared Topic"}, {"title": "11. Integrating Theme Statements into Analytical Writing", "standard": "MN Anchor Standard W2", "bullets": ["Literary Response Structure: Incorporate your theme statement into your essay's thesis statement.", "Thesis Template: 'In [Text Title], [Author] uses [Literary Device] to reveal that [Universal Theme Statement].'", "Example Thesis: 'In The Giver, Lowry uses memory transmission to reveal that true societal peace cannot exist without personal freedom.'", "Writing Tip: Keep the theme statement clean and clear at the end of your introduction."], "callout": "Writing Anchor: A strong thematic statement anchors your entire literary essay.", "icon": "✍️", "visual_caption": "Embedding Theme Statements into Thesis Statements"}, {"title": "12. Lesson Wrap-Up & Exit Checkpoint", "standard": "MN Anchor Standard R2", "bullets": ["Core Recap: A topic is a label (1-2 words); a theme is a universal truth expressed in a complete sentence.", "Key Criteria: Strong themes are universal, avoid clichés, and reflect the author's deeper insight.", "Next Action: Complete the Student Work Checkpoint below to test your understanding.", "Submission Notice: Click the submit button to open print settings and turn your sheet into the Red Basket!"], "callout": "Daily Goal Accomplished: You can now distinguish topics from thematic statements!", "icon": "🎓", "visual_caption": "Lesson Summary & Transition to Reflection Checkpoint"}], "resources": [{"title": "The Celebrated Jumping Frog of Calaveras County", "description": "First short story.", "file": "https://twain.lib.virginia.edu/projects/price/frog.htm"}], "form": [{"label": "Student Name", "type": "short_text", "required": true}, {"label": "Date", "type": "date", "required": true}, {"label": "Concept Check 1: In your own words, explain the difference between a literary topic and a thematic statement.", "type": "quote_citation", "required": true}, {"label": "Multiple Choice: Which of the following is a TRUE, universal thematic statement?", "type": "rating_scale", "options": ["A. Courage and Perseverance", "B. Katniss demonstrates courage during the Hunger Games.", "C. Overcoming deep-seated fear requires accepting vulnerability and trusting others.", "D. You should never judge a book by its cover."], "required": true}, {"label": "Theme Creation Challenge: Select one topic ('Perseverance', 'Isolation', or 'Justice') and turn it into a complete, universal thematic statement.", "type": "quote_citation", "required": true}, {"label": "Textual Support: Cite a specific piece of evidence or character action from a text we have read that supports the theme statement you created above.", "type": "quote_citation", "required": true}, {"label": "Self-Assessment: How confident do you feel identifying and writing complete thematic statements?", "type": "rating_scale", "options": ["1 - Need Support (Struggling to move beyond single-word topics)", "2 - Developing (Can write theme sentences, but often include plot details or clichés)", "3 - Competent (Can reliably differentiate topics from universal theme statements)", "4 - Expert (Can craft complex theme statements and integrate them into thesis statements)"], "required": true}, {"label": "Student Learning Pledge", "type": "checkbox_group", "options": ["I completed today's thematic analysis exercises and reviewed all topic vs. theme criteria."], "required": true}]}));
+</script>
+<script>
+  // JSON data placeholder injected by build.py
+  const LESSON_DATA = {{lesson_json}};
+  initLesson(LESSON_DATA);
+</script>
+</body>
+</html>
